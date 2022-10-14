@@ -1,4 +1,8 @@
 
+%define githash 52e9603dd8c79cbc267a4733389c1f7e7625b352
+
+%define shorthash %(c=%{githash}; echo ${c:0:10})
+
 Name:          eww
 Version:       0.4.0
 Release:       5.git.%{shorthash}%{?dist}

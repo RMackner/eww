@@ -1,4 +1,3 @@
-
 %define githash 52e9603dd8c79cbc267a4733389c1f7e7625b352
 
 %define shorthash %(c=%{githash}; echo ${c:0:10})
@@ -11,39 +10,37 @@ License:       MIT
 URL:           https://github.com/elkowar/eww
 Source:        %{url}/archive/%{githash}/%{name}-%{githash}.tar.gz
 
+Requires: gtk3, gtk-layer-shell, pango, gdk-pixbuf2
+Requires: cairo, glib2, libgcc, glibc
 
-BuildRequires:  make gcc
-BuildRequires:  pkgconfig(gtk-layer-shell-0)
-BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-
-#For rustup
-BuildRequires:  curl
-
+BuildRequires: gcc
+BuildRequires: gtk3-devel, gtk-layer-shell-devel, pango-devel, gdk-pixbuf2-devel
+BuildRequires: cairo-devel, glib2-devel, glibc-devel
 
 %description
-Elkowars Wacky Widgets is a standalone widget system made in Rust that allows you to implement your own, custom widgets in any window manager.
+Elkowars Wacky Widgets is a standalone widget system made in Rust 
+that allows you to implement your own, custom widgets in any window manager.
+
+%global debug_package %{nil}
 
 %prep
-%autosetup -n %{name}
+%setup -q -n %{name}-%{githash}
+export RUSTUP_HOME=%{_builddir}/.rustup
+export CARGO_HOME=%{_builddir}/.cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ls %{_builddir}/.rustup
+export PATH=%{_builddir}/.cargo/bin:$PATH
+rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
 
 %build
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-source $HOME/.cargo/env
+export RUSTUP_HOME=%{_builddir}/.rustup
+export CARGO_HOME=%{_builddir}/.cargo
+export PATH=%{_builddir}/.cargo/bin:$PATH
 cargo build --release --no-default-features --features=wayland
 
-
 %install
-install -p -D -m755 target/release/eww          %{buildroot}%{_bindir}/eww
-mkdir -p %{buildroot}%{_sysconfdir}/xdg/%{name}
-mv examples/eww-bar  %{buildroot}%{_sysconfdir}/xdg/%{name}
+%{__mkdir} -p %{buildroot}%{_bindir}
+%{__install} -m 755 %{_builddir}/%{name}-%{githash}/target/release/eww %{buildroot}%{_bindir}/eww
 
 %files
-%license LICENSE
-%doc README.md
-%{_bindir}/%{name}
-%{_sysconfdir}/xdg/%{name}/*
-
-%changelog
-%autochangelog
+%{_bindir}/eww

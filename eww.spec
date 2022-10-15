@@ -27,7 +27,7 @@ that allows you to implement your own, custom widgets in any window manager.
 %setup -q -n %{name}-%{githash}
 export RUSTUP_HOME=%{_builddir}/.rustup
 export CARGO_HOME=%{_builddir}/.cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rust.sh -s -- -y
+curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs -o rust.sh -s -- -y
 ls %{_builddir}/.rustup
 export PATH=%{_builddir}/.cargo/bin:$PATH
 rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy

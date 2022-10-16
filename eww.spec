@@ -24,7 +24,7 @@ that allows you to implement your own, custom widgets in any window manager.
 %global debug_package %{nil}
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 export RUSTUP_HOME=%{_builddir}/.rustup
 export CARGO_HOME=%{_builddir}/.cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y

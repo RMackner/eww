@@ -24,7 +24,7 @@ that allows you to implement your own, custom widgets in any window manager.
 %global debug_package %{nil}
 
 %prep
-%autosetup -n %{crate}-%{version_no_tilde} -p1
+%autosetup -n eww-%{version_no_tilde} -p1
 %cargo_prep
 rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
 

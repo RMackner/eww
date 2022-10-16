@@ -29,7 +29,7 @@ BuildRequires:  curl
 Elkowars Wacky Widgets is a standalone widget system made in Rust that allows you to implement your own, custom widgets in any window manager.
 
 %prep
-%autosetup -n %{name}
+%autosetup -n %{name}-0.4.0
 
 %build
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

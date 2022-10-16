@@ -27,9 +27,6 @@ that allows you to implement your own, custom widgets in any window manager.
 %cargo_prep
 rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
 
-%generate_buildrequires
-%cargo_generate_buildrequires
-
 %build
 %cargo_build --release --no-default-features --features=wayland
 

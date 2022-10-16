@@ -24,19 +24,14 @@ that allows you to implement your own, custom widgets in any window manager.
 %global debug_package %{nil}
 
 %prep
-%setup -q -n %{name}-%{githash}
-export RUSTUP_HOME=%{_builddir}/.rustup
-export CARGO_HOME=%{_builddir}/.cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
-ls %{_builddir}/.rustup
-export PATH=%{_builddir}/.cargo/bin:$PATH
-rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+%cargo_prep
+
+%generate_buildrequires
+%cargo_generate_buildrequires
 
 %build
-export RUSTUP_HOME=%{_builddir}/.rustup
-export CARGO_HOME=%{_builddir}/.cargo
-export PATH=%{_builddir}/.cargo/bin:$PATH
-cargo build --release --no-default-features --features=wayland
+%cargo_build --release --no-default-features --features=wayland
+
 
 %install
 %{__mkdir} -p %{buildroot}%{_bindir}

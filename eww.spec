@@ -8,7 +8,7 @@ Release:       5.git.%{shorthash}%{?dist}
 Summary:       ElKowars wacky widgets
 License:       MIT
 URL:           https://github.com/elkowar/eww
-Source:        %{url}/archive/%{githash}/%{name}-%{githash}.tar.gz
+Source:        https://github.com/elkowar/eww/archive/refs/tags/v0.4.0.tar.gz
 
 Requires: gtk3, gtk-layer-shell, pango, gdk-pixbuf2
 Requires: cairo, glib2, libgcc, glibc
@@ -34,7 +34,7 @@ rustup toolchain install nightly --allow-downgrade --profile minimal --component
 
 %install
 %{__mkdir} -p %{buildroot}%{_bindir}
-%{__install} -m 755 %{_builddir}/%{name}-%{githash}/target/release/eww %{buildroot}%{_bindir}/eww
+%{__install} -m 755 %{_builddir}/%{name}/target/release/eww %{buildroot}%{_bindir}/eww
 
 %files
 %{_bindir}/eww

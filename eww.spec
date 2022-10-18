@@ -35,7 +35,7 @@ Elkowars Wacky Widgets is a standalone widget system made in Rust that allows yo
 %build
 git clone https://github.com/rust-lang/rustup.rs.git
 source $HOME/rustup.rs
-cargo build --release --features no-self-update --bin rustup-init
+rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
 
 
 %install
@@ -51,3 +51,4 @@ mv examples/eww-bar  %{buildroot}%{_sysconfdir}/xdg/%{name}
 
 %changelog
 %autochangelog
+

@@ -1,12 +1,12 @@
 
-Name:           tofi
-Version:        0.6.0
+Name:           rustup
+Version:        nightly
 Release:        %autorelease
 Summary:        An extremely fast and simple dmenu / rofi replacement for wlroots-based Wayland compositors
 License:        MIT
 URL:            https://github.com/philj56/tofi
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
-Conflicts:      tofi
+Source0:        https://github.com/rust-lang/rustup.rs.git
+Conflicts:      rustup
 
 Requires: harfbuzz
 Requires: cairo

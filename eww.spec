@@ -23,6 +23,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 
 #For rustup
 BuildRequires:  curl
+BuildRequires:  git
 
 
 %description
@@ -32,9 +33,9 @@ Elkowars Wacky Widgets is a standalone widget system made in Rust that allows yo
 %autosetup -n %{name}-0.4.0
 
 %build
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-source $HOME/.cargo/env
-cargo build --release --no-default-features --features=wayland
+git clone https://github.com/rust-lang/rustup.rs.git
+source $HOME/rustup.rs
+cargo build --release --features no-self-update --bin rustup-init
 
 
 %install
@@ -50,4 +51,3 @@ mv examples/eww-bar  %{buildroot}%{_sysconfdir}/xdg/%{name}
 
 %changelog
 %autochangelog
-

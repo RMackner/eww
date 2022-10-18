@@ -8,7 +8,8 @@ Release:       5.git.%{shorthash}%{?dist}
 Summary:       ElKowars wacky widgets
 License:       MIT
 URL:           https://github.com/elkowar/eww
-Source:        %{url}/archive/%{githash}/%{name}-%{githash}.tar.gz
+Source0:        %{url}/archive/%{githash}/%{name}-%{githash}.tar.gz
+Source1:       https://github.com/rust-lang/rustup.rs.git
 
 Requires: gtk3, gtk-layer-shell, pango, gdk-pixbuf2
 Requires: cairo, glib2, libgcc, glibc
@@ -27,12 +28,11 @@ that allows you to implement your own, custom widgets in any window manager.
 
 %prep
 %setup -q -n %{name}-%{githash}
-export RUSTUP_HOME=%{_builddir}/rustup.rs
+export RUSTUP_HOME=%{_builddir}/.rustup
 export CARGO_HOME=%{_builddir}/.cargo
-git clone "https://github.com/rust-lang/rustup.rs.git"
 
 %build
-export RUSTUP_HOME=%{_builddir}/rustup.rs
+export RUSTUP_HOME=%{_builddir}/.rustup
 export CARGO_HOME=%{_builddir}/.cargo
 export PATH=%{_builddir}/.cargo/bin:$PATH
 cargo build --release --features no-self-update

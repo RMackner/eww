@@ -16,6 +16,8 @@ Requires: cairo, glib2, libgcc, glibc
 BuildRequires: gcc
 BuildRequires: gtk3-devel, gtk-layer-shell-devel, pango-devel, gdk-pixbuf2-devel
 BuildRequires: cairo-devel, glib2-devel, glibc-devel
+BuildRequires: git
+
 
 %description
 Elkowars Wacky Widgets is a standalone widget system made in Rust 

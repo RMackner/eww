@@ -33,7 +33,7 @@ git clone "https://github.com/rust-lang/rustup.rs.git"
 export RUSTUP_HOME=%{_builddir}/rustup.rs
 export CARGO_HOME=%{_builddir}/.cargo
 export PATH=%{_builddir}/.cargo/bin:$PATH
-cargo build --release --no-default-features --features=wayland
+cargo build --release --features no-self-update
 
 %install
 %{__mkdir} -p %{buildroot}%{_bindir}

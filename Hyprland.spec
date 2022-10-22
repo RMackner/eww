@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  tar
 
 # bundled wlroots build requirements
 BuildRequires:  glslang
@@ -75,7 +76,7 @@ very flexible IPC model allowing for a lot of customization, and more.
 %prep
 %autosetup -n %{name}-%{githash}
 cd /builddir/build/BUILD
-/usr/lib/rpm/rpmuncompress -x /builddir/build/SOURCES/wlroots-master.tar.gz
+/usr/bin/tar xvf /builddir/build/SOURCES/wlroots-master.tar.gz
 cd wlroots-master
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 cd /builddir/build/BUILD

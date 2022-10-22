@@ -72,7 +72,7 @@ very flexible IPC model allowing for a lot of customization, and more.
 
 
 %prep
-%autosetup -n %{name}-%{githash}
+%autosetup -p 1 -c
 
 
 %build

@@ -75,6 +75,9 @@ very flexible IPC model allowing for a lot of customization, and more.
 %prep
 %autosetup -n %{name}-%{githash}
 /usr/lib/rpm/rpmuncompress -x /builddir/build/SOURCES/wlroots-master.tar.gz
+cd wlroots-master
+/usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
+cd /builddir/build/BUILD
 cp ./wlroots-master/ ./%{name}-%{githash}/subprojects/wlroots/
 
 %build

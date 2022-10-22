@@ -74,7 +74,7 @@ very flexible IPC model allowing for a lot of customization, and more.
 
 %prep
 %autosetup -n %{name}-%{githash}
-%autosetup -n %{source1}
+%autosetup -n wlroots-master.tar.gz
 cp ./wlroots-master/ ./%{name}-%{githash}/subprojects/wlroots/
 
 %build

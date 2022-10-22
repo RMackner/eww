@@ -2,10 +2,10 @@
 
 %define shorthash %(c=%{githash}; echo ${c:0:10})
 
-Name:           hyprland
+Name:           Hyprland
 Version:        1.git.%{shorthash}%{?dist}
 Release:        %autorelease
-Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its looks
+Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its looks.
 
 # main source code is BSD-3-Clause
 # subprojects/wlroots is MIT
@@ -72,7 +72,7 @@ very flexible IPC model allowing for a lot of customization, and more.
 
 
 %prep
-%autosetup -p 1 -c
+%autosetup -n %{name}-%{githash}
 
 
 %build

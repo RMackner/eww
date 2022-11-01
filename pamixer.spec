@@ -1,29 +1,29 @@
-# SPEC file overview:
-# https://docs.fedoraproject.org/en-US/quick-docs/creating-rpm-packages/#con_rpm-spec-file-overview
-# Fedora packaging guidelines:
-# https://docs.fedoraproject.org/en-US/packaging-guidelines/
+%global debug_package %{nil}
 
-%define debug_package %{nil}
+Name:           pamixer
+Version:        1.6
+Release:        3%{?dist}
+Summary:        PulseAudio command line mixer
 
-Name: pamixer
-Version: 1.6
-Release: 2%{?dist}
-Summary: Pulseaudio command line mixer
+License:        GPLv3
+URL:            https://github.com/cdemoulins/%{name}
+Source0:        https://github.com/cdemoulins/%{name}/archive/refs/tags/%{version}.tar.gz
 
-License: GPL3
-URL: https://github.com/cdemoulins/pamixer
-Source0: https://github.com/cdemoulins/pamixer/archive/%{version}.tar.gz
-
-BuildRequires: gcc-c++ pulseaudio-libs-devel boost-devel meson
-#Requires:
+BuildRequires:  boost-devel
+BuildRequires:  cmake
+BuildRequires:  cxxopts
+BuildRequires:  gcc-c++
+BuildRequires:  meson
+BuildRequires:  pulseaudio-libs-devel
 
 %description
-pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks.
+pamixer is like amixer but for PulseAudio. It can control the volume levels of the sinks.
 
 %prep
-%setup -n %{name}-%{version}
+%setup -q
 
 %build
+%meson
 %meson_build
 
 %install
@@ -32,12 +32,13 @@ pamixer is like amixer but for pulseaudio. It can control the volume levels of t
 %files
 %doc README.rst
 %license COPYING
-%{_bindir}/pamixer
+%{_bindir}/%{name}
+%{_mandir}/man1/pamixer.1.gz
 
 %changelog
-* Mon Feb 03 2020 Johan Swensson <kupo@kupo.se>- 1.4-2
-- rebuilt
+* Sat Aug 13 2022 - 1.6
+- Update to latest release
+- Use meson to build
 
-* Mon Nov 11 2019 Johan Swensson <kupo@kupo.se> - 1.4-1
-- initial build
-
+* Mon Apr 25 2022 David Salomon <david35mm@disroot.org> - 1.5-1
+- First pamixer package

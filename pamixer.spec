@@ -21,13 +21,14 @@ BuildRequires: gcc-c++ pulseaudio-libs-devel boost-devel
 pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks.
 
 %prep
-%setup -q
+%setup -n %{name}-%{version}
 
 %build
-%meson_build
+meson setup build
+meson compile -C build
 
 %install
-%meson_install
+meson install -C build
 
 %files
 %doc README.rst

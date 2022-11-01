@@ -1,10 +1,10 @@
-%define githash 52e9603dd8c79cbc267a4733389c1f7e7625b352
+%define githash 7a0e1b77f24ee89d627e552f9abc55eb636aaaa6
 
 %define shorthash %(c=%{githash}; echo ${c:0:10})
 
 Name:          eww
 Version:       0.4.0
-Release:       5.git.%{shorthash}%{?dist}
+Release:       1.git.%{shorthash}%{?dist}
 Summary:       ElKowars wacky widgets
 License:       MIT
 URL:           https://github.com/elkowar/eww

@@ -14,7 +14,7 @@ License: GPL3
 URL: https://github.com/cdemoulins/pamixer
 Source0: https://github.com/cdemoulins/pamixer/archive/%{version}.tar.gz
 
-BuildRequires: gcc-c++ pulseaudio-libs-devel boost-devel
+BuildRequires: gcc-c++ pulseaudio-libs-devel boost-devel meson
 #Requires:
 
 %description

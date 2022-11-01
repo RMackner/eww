@@ -24,10 +24,10 @@ pamixer is like amixer but for pulseaudio. It can control the volume levels of t
 %setup -n %{name}-%{version}
 
 %build
-meson compile -C build
+meson
 
 %install
-meson install -C build
+meson install
 
 %files
 %doc README.rst
